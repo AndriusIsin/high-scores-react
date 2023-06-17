@@ -1,9 +1,9 @@
 import allCountryScores from "./allCountryScores.js";
-import ScoreTable from "./ScoreTable.js";
+import HighScoreTable from "./HighScoreTable.js";
 import "./App.css";
 
 function App() {
-  return <ScoreTable results={allCountryScores} />;
+  return <HighScoreTable results={allCountryScores} />;
 }
 
 export default App;

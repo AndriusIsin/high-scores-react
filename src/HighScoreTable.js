@@ -1,4 +1,5 @@
-const ScoreTable = (props) => {
+import PlayerScore from "./PlayerScore";
+const HighScoreTable = (props) => {
   return (
     <div class="main-container">
       <h1>High Scores per Country</h1>
@@ -9,10 +10,7 @@ const ScoreTable = (props) => {
             {country.scores.map((score) => {
               return (
                 <div class="flexbox">
-                  <div class="flex">
-                    <p class="name">{score.n.toUpperCase()} </p>
-                    <p class="score">{score.s}</p>
-                  </div>
+                  <PlayerScore player={score.n} score={score.s} />
                 </div>
               );
             })}
@@ -23,4 +21,4 @@ const ScoreTable = (props) => {
   );
 };
 
-export default ScoreTable;
+export default HighScoreTable;
