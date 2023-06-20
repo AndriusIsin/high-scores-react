@@ -17,13 +17,23 @@ const HighScoreTable = (props) => {
           return (
             <div className="internal-container" key={country.name}>
               <h2>HIGH SCORES:{country.name}</h2>
-              {country.scores.map((score, i) => {
-                return (
-                  <div className="flexbox" key={i}>
-                    <PlayerScore player={score.n} score={score.s} />
-                  </div>
-                );
-              })}
+              {country.scores
+                .sort((score1, score2) => {
+                  if (score1.s > score2.s) {
+                    return -1;
+                  } else if (score1.s < score2.s) {
+                    return 1;
+                  } else {
+                    return 0;
+                  }
+                })
+                .map((score, i) => {
+                  return (
+                    <div className="flexbox" key={i}>
+                      <PlayerScore player={score.n} score={score.s} />
+                    </div>
+                  );
+                })}
             </div>
           );
         })}
