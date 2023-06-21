@@ -1,7 +1,19 @@
+import { useState } from "react";
 import PlayerScore from "./PlayerScore";
+import Button from "./Button";
+import { SortDescending, SortAscending } from "./Sort";
 const HighScoreTable = (props) => {
+  const [active, setActive] = useState("Ascending");
+  function handleClick() {
+    if (active === "Ascending") {
+      setActive("Descending");
+    } else {
+      setActive("Ascending");
+    }
+  }
   return (
     <div className="main-container">
+      <Button click={handleClick} name={active} />
       <h1>High Scores per Country</h1>
       {props.results
         .sort((country1, country2) => {
@@ -18,15 +30,7 @@ const HighScoreTable = (props) => {
             <div className="internal-container" key={country.name}>
               <h2>HIGH SCORES:{country.name}</h2>
               {country.scores
-                .sort((score1, score2) => {
-                  if (score1.s > score2.s) {
-                    return -1;
-                  } else if (score1.s < score2.s) {
-                    return 1;
-                  } else {
-                    return 0;
-                  }
-                })
+                .sort(active === "Ascending" ? SortAscending : SortDescending)
                 .map((score, i) => {
                   return (
                     <div className="flexbox" key={i}>
