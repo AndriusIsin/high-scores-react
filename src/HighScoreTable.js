@@ -11,6 +11,7 @@ const HighScoreTable = (props) => {
       setActive("Ascending");
     }
   }
+  // please check my repository
   return (
     <div className="main-container">
       <Button click={handleClick} name={active} />
